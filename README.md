@@ -4,7 +4,6 @@
 
 S-Lab, Nanyang Technological University
 
-![Teaser](MonoArt/static/images/teaser0301.jpg)
 
 ## Changelog🔥
 
@@ -12,3 +11,15 @@ S-Lab, Nanyang Technological University
 
 ## Cite this work📝
 
+
+@article{li2026monoart,
+title     = {MonoArt: Progressive Structural Reasoning for
+Monocular Articulated 3D Reconstruction},
+author    = {Li, Haitian and
+Xie, Haozhe and
+Xu, Junxiang and
+Wen, Beichen and
+Hong, Fangzhou and
+Liu, Ziwei},
+year      = {2026}
+}
