@@ -26,6 +26,4 @@ S-Lab, Nanyang Technological University
   journal   = {arXiv preprint arXiv 2603.19231},
   year      = {2026}
 }
-
-
 ```
