@@ -15,7 +15,7 @@ The trainer rasterizes aligned XYZ and 8D TRELLIS features to three planes, refi
 
 `best.ckpt` and `last.ckpt` use the same `encoder.*`, `triplane_transformer.*`, and optional `part_decoder.*` key prefixes consumed by inference and the bundle packer.
 
-The clean trainer is a release interface for the paper objective. It does not claim bitwise equivalence with the recovered private trainer, whose embedded checkpoint configuration includes additional sampler heuristics and a different maximum epoch count. Those differences are retained in the original checkpoint configuration and summarized in [reproducibility.md](reproducibility.md).
+The clean trainer is a release interface for the paper objective. It does not claim bitwise equivalence with the recovered private trainer, whose embedded checkpoint configuration includes additional sampler heuristics and a different maximum epoch count. The embedded checkpoint configuration remains authoritative for that artifact.
 
 ## 2. Dual-Query Motion Decoder
 

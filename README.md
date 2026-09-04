@@ -156,13 +156,13 @@ torchrun --standalone --nproc-per-node=4 \
   -m monoart.motion.scripts.train --config configs/train_kinematic.yaml
 ```
 
-Dataset preparation and the important differences between the paper settings and recovered artifacts are recorded in [docs/training.md](docs/training.md), [docs/datasets.md](docs/datasets.md), and [docs/reproducibility.md](docs/reproducibility.md).
+Dataset preparation and training details are recorded in [docs/training.md](docs/training.md) and [docs/datasets.md](docs/datasets.md).
 
 ## 🗂️ Repository Layout
 
 ```text
 configs/             inference and training configurations
-docs/                installation, data, inference, and reproducibility notes
+docs/                installation, data, inference, training, and release notes
 environment/         reproducible Conda specifications
 examples/            versioned end-to-end smoke-test inputs and reference metadata
 scripts/             checkpoint and release utilities

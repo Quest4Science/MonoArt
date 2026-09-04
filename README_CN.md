@@ -145,13 +145,13 @@ torchrun --standalone --nproc-per-node=4 \
   -m monoart.motion.scripts.train --config configs/train_kinematic.yaml
 ```
 
-数据集准备方法，以及论文设置与现有权重之间的重要差异，记录在 [docs/training.md](docs/training.md)、[docs/datasets.md](docs/datasets.md) 和 [docs/reproducibility.md](docs/reproducibility.md) 中。
+数据集准备方法与训练说明记录在 [docs/training.md](docs/training.md) 和 [docs/datasets.md](docs/datasets.md) 中。
 
 ## 🗂️ 仓库结构
 
 ```text
 configs/             推理与训练配置
-docs/                安装、数据、推理和复现说明
+docs/                安装、数据、推理、训练和发布说明
 environment/         可复现的 Conda 环境配置
 examples/            纳入版本控制的端到端测试输入与参考元数据
 scripts/             模型权重与发布工具
