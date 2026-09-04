@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use MonoArt, please cite our paper."
+title: "MonoArt: Progressive Structural Reasoning for Monocular Articulated 3D Reconstruction"
+type: software
+version: 0.1.0
+repository-code: "https://github.com/Quest4Science/MonoArt"
+url: "https://lihaitian.com/MonoArt"
+authors:
+  - family-names: Li
+    given-names: Haitian
+  - family-names: Xie
+    given-names: Haozhe
+  - family-names: Xu
+    given-names: Junxiang
+  - family-names: Wen
+    given-names: Beichen
+  - family-names: Hong
+    given-names: Fangzhou
+  - family-names: Liu
+    given-names: Ziwei
+preferred-citation:
+  type: article
+  title: "MonoArt: Progressive Structural Reasoning for Monocular Articulated 3D Reconstruction"
+  authors:
+    - family-names: Li
+      given-names: Haitian
+    - family-names: Xie
+      given-names: Haozhe
+    - family-names: Xu
+      given-names: Junxiang
+    - family-names: Wen
+      given-names: Beichen
+    - family-names: Hong
+      given-names: Fangzhou
+    - family-names: Liu
+      given-names: Ziwei
+  year: 2026
+  journal: arXiv
+  volume: "abs/2603.19231"
+  doi: "10.48550/arXiv.2603.19231"

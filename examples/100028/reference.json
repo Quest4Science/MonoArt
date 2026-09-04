@@ -1,0 +1,42 @@
+{
+  "sample_id": "100028",
+  "description": "Canonical end-to-end KitchenPot smoke-test case.",
+  "input": {
+    "path": "input.png",
+    "sha256": "9535dabd04b0937e07b40853fcd7861b37d9a5e0ef922480488d3729e8ce8614",
+    "width": 1024,
+    "height": 1024,
+    "mode": "RGBA"
+  },
+  "inference": {
+    "seed": 42,
+    "num_points": 100000,
+    "checkpoint": "monoart_stage1.pt",
+    "checkpoint_sha256": "ab523603fed5b03807219a08284cdea22c4e82969cef98a72f7f2b2ace068fbe"
+  },
+  "validated_reference": {
+    "path": "expected",
+    "whole_faces": 14134,
+    "num_links": 3,
+    "max_raw_alignment_error": 0.0,
+    "max_urdf_zero_pose_error": 0.0,
+    "links": [
+      {
+        "name": "link_0",
+        "joint_type": "fixed",
+        "faces": 6356
+      },
+      {
+        "name": "link_1",
+        "joint_type": "prismatic",
+        "faces": 6101
+      },
+      {
+        "name": "link_2",
+        "joint_type": "prismatic",
+        "faces": 1677
+      }
+    ]
+  },
+  "note": "Predicted counts and parameters may vary across runs, GPU models, and software versions; validate structural invariants with monoart validate-asset."
+}

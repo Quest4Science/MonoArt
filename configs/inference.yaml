@@ -1,0 +1,88 @@
+# Architecture of the released MonoArt motion checkpoint.
+# Paths are supplied through the CLI; this file is portable.
+
+data:
+  n_points: 100000
+  include_fixed_motion: true
+
+model:
+  partfield_dim: 448
+  vae_dim: 8
+  d_model: 448
+  d_global: 64
+  num_queries: 200
+  num_decoder_layers: 6
+  nhead: 8
+  dim_feedforward: 1792
+  dropout: 0.1
+  num_categories: 46
+  num_motion_types: 4
+  use_learnable_fallback: true
+  use_position_refinement: true
+  use_partfield_for_category: true
+  partfield_proj_dim: 32
+
+semantic_fusion:
+  enabled: true
+  enable_part_classification: true
+  part_class_use_mlp: true
+  enable_motion_prior: false
+  use_motion_prior_head: false
+  motion_prior_adaptive_mix: false
+  enable_semantic_refiner: true
+  clip_embedding_path: null
+
+part_geometric:
+  enabled: true
+  pos_encoding_dim: 64
+  std_proj_dim: 64
+
+rpe:
+  enabled: false
+  type: separable
+  separable_version: v1
+  separable_embed_dim: 64
+  mlp_hidden_dim: 64
+  mlp_num_layers: 2
+  mlp_use_fourier: true
+  mlp_num_frequencies: 8
+  mlp_max_freq: 10.0
+  grid_size: 0.05
+  num_buckets: 24
+  use_query_bias: true
+  use_key_bias: true
+  use_value_bias: false
+
+iterative_semantic_fusion:
+  enabled: false
+
+parent_prediction:
+  head:
+    use_position: true
+    use_semantic: true
+    lambda_semantic_init: 0.3
+  inference:
+    use_cycle_resolution: true
+
+inference:
+  score_threshold: 0.5
+  mask_threshold: 0.5
+  force_assign: true
+  use_nms: true
+  nms_iou_threshold: 0.5
+  device: cuda
+
+output:
+  save_npz: true
+  save_json: true
+  save_ply: true
+  save_kinematic_tree: true
+  save_per_link_ply: true
+  output_local_coords: false
+  visualization:
+    enabled: true
+    colormap: tab20
+    point_size: 1.0
+    show_axes: true
+    axis_length: 0.3
+    use_global_transform: true

@@ -1,0 +1,10 @@
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.glb binary
+*.ply binary
+*.pt binary
+*.pth binary
+*.ckpt binary
+*.npz binary
+*.npy binary

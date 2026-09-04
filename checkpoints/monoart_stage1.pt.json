@@ -1,0 +1,10 @@
+{
+  "path": "monoart_stage1.pt",
+  "format_version": 1,
+  "size_bytes": 583908148,
+  "reasoner_tensors": 107,
+  "motion_tensors": 259,
+  "contains_kinematic_estimator": false,
+  "motion_epoch": 15,
+  "sha256": "ab523603fed5b03807219a08284cdea22c4e82969cef98a72f7f2b2ace068fbe"
+}

@@ -1,0 +1,146 @@
+# Kinematic Estimator Stage-2 training configuration.
+
+data:
+  train_csv: data/motion/splits/train.csv
+  val_csv: data/motion/splits/val.csv
+  test_csv: data/motion/splits/test.csv
+  json_dir: data/motion/annotations
+  ply_dir: data/motion/point_clouds
+  vae_dir: data/motion/trellis_features
+  partfield_dir: data/motion/reasoner_features
+  ply_filename: sample_100k.ply
+  vae_filename: null
+  vae_in_anno_dir: false
+  partfield_filename: points_100000_feat.npy
+  n_points: 100000
+  augment_train: true
+  augment_val: false
+  include_fixed_motion: true
+  use_world_coordinates: true
+
+model:
+  partfield_dim: 448
+  vae_dim: 8
+  d_model: 448
+  d_global: 64
+  num_queries: 200
+  num_decoder_layers: 6
+  nhead: 8
+  dim_feedforward: 1792
+  dropout: 0.1
+  num_categories: 46
+  num_motion_types: 4
+  use_learnable_fallback: true
+  use_position_refinement: true
+  use_partfield_for_category: true
+  partfield_proj_dim: 32
+
+semantic_fusion:
+  enabled: true
+  enable_part_classification: true
+  part_class_use_mlp: true
+  enable_motion_prior: false
+  use_motion_prior_head: false
+  motion_prior_adaptive_mix: false
+  enable_semantic_refiner: true
+  clip_embedding_path: null
+  part_class_loss_weight: 0.5
+  use_part_class_balance: true
+
+part_geometric:
+  enabled: true
+  pos_encoding_dim: 64
+  std_proj_dim: 64
+
+rpe:
+  enabled: false
+  type: separable
+
+iterative_semantic_fusion:
+  enabled: false
+  deep_supervision: false
+
+parent_prediction:
+  enabled: true
+  stage1_checkpoint: outputs/motion_checkpoints/best.pth
+  freeze:
+    backbone: true
+    decoder: false
+    seg_heads: true
+    motion_heads: true
+    semantic_fusion: true
+    category_head: true
+    part_class_head: true
+  decoder_lr_scale: 0.1
+  head:
+    use_position: true
+    use_semantic: true
+    lambda_semantic_init: 0.3
+    init_affinity_from_stats: false
+  loss:
+    parent_weight: 1.0
+    label_smoothing: 0.0
+  inference:
+    use_cycle_resolution: true
+
+loss:
+  matcher_chunk_size: 25
+  mask_focal_weight: 0.5
+  mask_dice_weight: 2.0
+  score_weight: 1.0
+  motion_type_weight: 1.0
+  motion_direction_weight: 1.0
+  motion_origin_weight: 1.2
+  motion_anchor_weight: 0.1
+  use_anchor_loss: true
+  motion_limit_weight: 0.5
+  category_weight: 0.3
+  use_category_class_balance: true
+  seg_weight: 1.0
+  motion_weight: 1.0
+  motion_warmup_epochs: 40
+  use_high_order_matching: true
+  iou_power_alpha: 2.0
+  use_quality_focal_loss: true
+  quality_focal_beta: 2.0
+  use_giou_target: true
+  use_unmatched_loss: true
+  unmatched_weight: 0.3
+  use_affinity_loss: true
+  affinity_k: 16
+  affinity_sigma: 0.1
+  affinity_weight: 0.1
+  use_limit_loss: true
+  limit_loss_type: l1
+  use_part_class_loss: true
+  part_class_weight: 0.5
+  part_class_balance: true
+  use_center_loss: true
+  center_weight: 1.0
+  center_loss_type: l1
+
+training:
+  max_epochs: 30
+  batch_size: 1
+  num_workers: 4
+  learning_rate: 0.00005
+  minimum_learning_rate: 0.000001
+  weight_decay: 0.01
+  warmup_epochs: 10
+  category_warmup_epochs: 0
+  grad_clip: 0.1
+  use_amp: true
+  exp_name: monoart_kinematic
+  log_dir: outputs/training_logs
+  log_interval: 10
+  checkpoint_dir: outputs/kinematic_checkpoints
+  save_interval: 2
+
+logging:
+  tensorboard: true
+  wandb: false
+  wandb_project: monoart
+
+system:
+  seed: 42
+  distributed: true

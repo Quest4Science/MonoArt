@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "monoart"
+version = "0.1.0"
+description = "Monocular articulated 3D reconstruction with progressive structural reasoning"
+readme = "README.md"
+requires-python = ">=3.10"
+license-files = ["LICENSE"]
+authors = [
+  {name = "Haitian Li"},
+  {name = "Haozhe Xie"},
+  {name = "Junxiang Xu"},
+  {name = "Beichen Wen"},
+  {name = "Fangzhou Hong"},
+  {name = "Ziwei Liu"},
+]
+dependencies = [
+  "numpy>=1.24,<3",
+  "Pillow>=10",
+  "plyfile>=1.0",
+  "PyYAML>=6",
+  "scipy>=1.10",
+  "scikit-learn>=1.3",
+  "torch>=2.4,<2.7",
+  "tqdm>=4.66",
+  "trimesh>=4.6",
+]
+
+[project.optional-dependencies]
+train = [
+  "pandas>=2.0",
+  "tensorboard>=2.14",
+  "wandb>=0.17",
+]
+dev = [
+  "pytest>=8",
+  "ruff>=0.8",
+]
+
+[project.urls]
+Homepage = "https://lihaitian.com/MonoArt"
+Paper = "https://arxiv.org/abs/2603.19231"
+Repository = "https://github.com/Quest4Science/MonoArt"
+
+[project.scripts]
+monoart = "monoart.cli:main"
+monoart-train-motion = "monoart.motion.scripts.train:main"
+monoart-evaluate-motion = "monoart.motion.scripts.evaluate:main"
+monoart-train-reasoner = "monoart.reasoner.training:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"monoart.motion" = ["assets/*.pt"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+exclude = ["third_party"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

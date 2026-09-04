@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.venv/
+.idea/
+.vscode/
+
+# Model artifacts are distributed as GitHub Release assets.
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.ckpt
+
+# Runtime outputs and local datasets.
+outputs/
+data/
+logs/
+wandb/
+.test-output/
+
+# External source installed by the bootstrap script.
+third_party/TRELLIS/
+third_party/.build/

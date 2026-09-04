@@ -1,0 +1,13 @@
+include CITATION.cff
+include LICENSE
+include README.md
+include README_CN.md
+include OPEN_QUESTIONS.md
+recursive-include assets *.jpg
+recursive-include checkpoints *.md *.json
+recursive-include configs *.yaml
+recursive-include docs *.md
+recursive-include environment *.yml *.txt
+recursive-include examples *.png *.json *.glb *.urdf
+recursive-include scripts *.py *.sh
+recursive-include tests *.py

@@ -1,0 +1,56 @@
+# Part-Aware Semantic Reasoner training configuration.
+# Dataset paths are explicit in each manifest; see docs/datasets.md.
+
+seed: 42
+initial_checkpoint: null
+
+data:
+  train_manifest: data/reasoner/train.csv
+  val_manifest: data/reasoner/val.csv
+  points_per_object: 5120
+  batch_size: 1
+  num_workers: 4
+
+model:
+  use_feature_encoder: true
+  use_pvcnn_only: false
+  use_2d_feat: false
+  use_final_mlp: false
+  triplane_resolution: 128
+  triplane_channels_low: 128
+  triplane_channels_high: 512
+  triplane_low_res: 32
+  triplane_high_res: 128
+  feature_dim: 448
+  feature_encoder:
+    feature_dim: 8
+    hidden_dims: [128, 256]
+    use_residual: true
+    dropout: 0.1
+    feature_root_paths: {}
+  pvcnn:
+    z_triplane_channels: 256
+    z_triplane_resolution: 128
+  transformer:
+    dim: 1024
+    layers: 6
+    heads: 8
+  mlp_num_layers: 4
+  mlp_hidden_dim: 64
+
+loss:
+  temperature: 0.07
+  anchors_per_object: 512
+  negatives_per_anchor: 256
+  max_candidates: 5120
+
+training:
+  max_epochs: 100
+  learning_rate: 0.00005
+  minimum_learning_rate: 0.000001
+  weight_decay: 0.01
+  warmup_epochs: 10
+  grad_clip: 0.1
+  use_amp: true
+  output_dir: outputs/reasoner_training
+  save_every: 10
