@@ -199,7 +199,7 @@ class UrdfAssetExportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             segmented, motion = self._write_input(root, parent="link_0")
-            with self.assertRaisesRegex(ValueError, "Hierarchical joint export"):
+            with self.assertRaisesRegex(ValueError, "Hierarchical URDF export"):
                 export_urdf_asset(segmented, motion, root / "asset")
 
     def test_pipeline_default_publishes_only_compact_asset(self) -> None:

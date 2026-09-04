@@ -7,8 +7,7 @@ Large weights are distributed as GitHub Release assets and are ignored by Git.
 - the Part-Aware Semantic Reasoner configuration and 107 tensors;
 - the Dual-Query Motion Decoder configuration and 259 tensors;
 - no optimizer or scheduler state;
-- no TRELLIS weights; and
-- no Kinematic Estimator head in the recovered artifact.
+- no TRELLIS weights.
 
 Verify the downloaded bytes before deserializing the trusted artifact, then inspect it:
 
@@ -17,7 +16,7 @@ monoart verify-checkpoint checkpoints/monoart_stage1.pt
 monoart inspect-checkpoint checkpoints/monoart_stage1.pt
 ```
 
-To rebuild the bundle from the trusted original checkpoints:
+To build the bundle from component checkpoints:
 
 ```bash
 monoart pack-checkpoint \

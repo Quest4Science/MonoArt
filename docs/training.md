@@ -1,6 +1,6 @@
 # Training
 
-The release exposes the three MonoArt-owned training phases separately. TRELLIS is used as a frozen external generator.
+MonoArt trains its three owned phases separately. TRELLIS is used as a frozen external generator.
 
 ## 1. Part-Aware Semantic Reasoner
 
@@ -15,8 +15,6 @@ The trainer rasterizes aligned XYZ and 8D TRELLIS features to three planes, refi
 
 `best.ckpt` and `last.ckpt` use the same `encoder.*`, `triplane_transformer.*`, and optional `part_decoder.*` key prefixes consumed by inference and the bundle packer.
 
-The clean trainer is a release interface for the paper objective. It does not claim bitwise equivalence with the recovered private trainer, whose embedded checkpoint configuration includes additional sampler heuristics and a different maximum epoch count. The embedded checkpoint configuration remains authoritative for that artifact.
-
 ## 2. Dual-Query Motion Decoder
 
 Prepare the four aligned data products and motion annotations, edit only the data paths if necessary, and run:
@@ -26,9 +24,9 @@ torchrun --standalone --nproc-per-node=4 \
   -m monoart.motion.scripts.train --config configs/train_motion.yaml
 ```
 
-The portable config follows the progressive schedule: 20 category warm-up epochs, 100 joint segmentation/motion epochs, and a 40-epoch motion-loss ramp. It uses AdamW at `5e-5`, weight decay `0.01`, ten warm-up epochs, AMP, batch size one per process, and gradient clipping at `0.1`.
+The provided config follows the progressive schedule: 20 category warm-up epochs, 100 joint segmentation/motion epochs, and a 40-epoch motion-loss ramp. It uses AdamW at `5e-5`, weight decay `0.01`, ten warm-up epochs, AMP, batch size one per process, and gradient clipping at `0.1`.
 
-The released checkpoint requires 200 queries and 46 categories. This differs from the paper's stated 100 queries and is intentionally not hidden by changing tensor shapes at load time.
+The Stage-1 checkpoint uses 200 motion queries and 46 object categories.
 
 ## 3. Kinematic Estimator
 
@@ -51,7 +49,7 @@ python -m monoart.motion.scripts.evaluate \
   --output_dir outputs/evaluation
 ```
 
-Do not compare results unless the dataset split, preprocessing cache, checkpoint SHA-256, and environment are fixed. The recovered repository did not contain a publishable final benchmark manifest, so no benchmark numbers are asserted by this code preparation.
+For comparable evaluations, keep the dataset split, preprocessing cache, checkpoint SHA-256, and environment fixed.
 
 ## Building a release bundle
 

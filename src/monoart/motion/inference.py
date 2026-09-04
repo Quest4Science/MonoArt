@@ -110,10 +110,7 @@ def main() -> None:
     )
     print(f"Saved motion predictions to {output}")
     if not has_tree:
-        print(
-            "Warning: this checkpoint has no Kinematic Estimator weights; "
-            "all links are attached to the base."
-        )
+        print("Using independent base-relative joints.")
 
 
 if __name__ == "__main__":

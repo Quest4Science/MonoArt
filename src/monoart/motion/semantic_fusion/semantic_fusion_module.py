@@ -189,7 +189,7 @@ class SemanticFusionModule(nn.Module):
         if self.semantic_refiner is not None and class_logits is not None:
             # Handle different query_pos formats
             if query_pos.shape[-1] == 3:
-                # Preserve the released checkpoint behavior when only raw XYZ is supplied.
+                # Preserve checkpoint-compatible behavior when only raw XYZ is supplied.
                 pos_features = query
             else:
                 pos_features = query_pos

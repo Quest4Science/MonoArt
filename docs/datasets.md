@@ -1,6 +1,6 @@
 # Dataset contracts
 
-No training data is redistributed in this preparation tree. Review the licenses of PartNet, PartNet-Mobility, and every derived asset before publishing splits or caches.
+This repository does not redistribute training data. Review the licenses of PartNet, PartNet-Mobility, and every derived asset before publishing splits or caches.
 
 ## Motion decoder
 
@@ -24,13 +24,13 @@ Given `anno_id = 100028_config_0_3_10`, the default loader resolves:
 
 The PLY must contain `x y z nx ny nz group_id`; `face_id` is optional for training and required for reliable GLB mapping. TRELLIS NPZ files contain a `features` array shaped `[N, 8]`. Reasoner NPY files are shaped `[N, 448]`. The released motion checkpoint expects `N = 100000`.
 
-Alternative PLY/NPZ filenames can be set in the YAML data section. Some recovered configuration keys retain their historical names for strict checkpoint and loader compatibility.
+Alternative PLY/NPZ filenames can be set in the YAML data section. Configuration field names are retained for strict checkpoint and loader compatibility.
 
 The annotation JSON is parsed into per-link joint type, axis direction, axis position, limits, semantic part name, and parent relationship. Training uses world-coordinate axes after forward-kinematic transformation by default.
 
 ## Semantic reasoner
 
-The clean reasoner trainer uses a manifest CSV with explicit paths, avoiding assumptions about a private directory hierarchy:
+The reasoner trainer uses a manifest CSV with explicit paths:
 
 ```csv
 sample_id,point_cloud,features,labels

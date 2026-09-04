@@ -50,14 +50,13 @@ class PartAwareSemanticReasoner(nn.Module):
 def build_reasoner(config: dict[str, Any], device: torch.device) -> dict[str, nn.Module | None]:
     """Construct checkpoint-compatible reasoner components.
 
-    The released model uses the feature-based encoder. The legacy PVCNN branch is
-    intentionally excluded because it is neither referenced by the released weights
-    nor by the image-to-articulation inference path.
+    The checkpoint-compatible path uses the feature-based encoder. The legacy PVCNN
+    branch is not part of the image-to-articulation inference path.
     """
     model_cfg = config["model"]
     if not model_cfg.get("use_feature_encoder", False):
         raise ValueError(
-            "This release supports the feature-based reasoner encoder only; "
+            "MonoArt inference supports the feature-based reasoner encoder; "
             "the checkpoint requests the legacy PVCNN encoder."
         )
 

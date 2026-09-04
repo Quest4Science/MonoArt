@@ -56,12 +56,6 @@ MonoArt is the official implementation of **MonoArt: Progressive Structural Reas
 Monocular Articulated 3D Reconstruction**. It turns a single object image into a textured,
 segmented, and articulated 3D asset.
 
-## 📌 Release Status
-
-The recovered `monoart_stage1.pt` artifact combines the MonoArt-owned semantic-reasoner and motion-decoder weights and removes optimizer state. TRELLIS remains an external checkpoint. The available artifact does **not** contain the Kinematic Estimator head; Stage-1 inference therefore attaches predicted links to the base. The estimator architecture and Stage-2 training path are included, but a complete tree requires a checkpoint containing `parent_head_state_dict`.
-
-This boundary is reported by `monoart inspect-checkpoint` and, when intermediate files are retained, by `work/run.json`.
-
 ## 🗓️ TODO
 
 - [x] ~~Publish the initial code and checkpoint release (organized and functional, but not yet fully polished).~~

@@ -113,7 +113,7 @@ def _parse_joint(raw: object, link_name: str) -> _Joint:
         )
     if parent != "base":
         raise ValueError(
-            "Hierarchical joint export is not supported by the released Stage-1 model; "
+            "Hierarchical URDF export requires parent-relative joint coordinates; "
             f"{link_name!r} has parent {parent!r} instead of 'base'"
         )
     if motion_code not in _MOTION_TYPES:

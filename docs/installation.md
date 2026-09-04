@@ -35,7 +35,7 @@ monoart verify-checkpoint checkpoints/monoart_stage1.pt
 monoart inspect-checkpoint checkpoints/monoart_stage1.pt
 ```
 
-Expected SHA-256 for the prepared artifact:
+Expected SHA-256 for the Stage-1 checkpoint:
 
 ```text
 ab523603fed5b03807219a08284cdea22c4e82969cef98a72f7f2b2ace068fbe

@@ -89,7 +89,7 @@ files are available under `work/mesh/` only when `--keep-intermediates` is enabl
 
 ## URDF coordinate convention
 
-The released Stage-1 model predicts independent base-relative joints in the reconstructed object's
+Stage-1 inference predicts independent base-relative joints in the reconstructed object's
 world frame. Independent mesh vertices are never shifted during export. Fixed and prismatic links
 use identity joint and visual origins; prismatic motion depends only on its predicted direction and
 limit, because an origin on an infinite translation axis is irrelevant and is not supervised during
@@ -98,13 +98,12 @@ and use the inverse pivot as the URDF visual/collision origin. This represents
 `T(pivot) * R(q) * T(-pivot)` while keeping each standalone GLB world-aligned.
 
 Mesh coordinates and prismatic limits remain in MonoArt's normalized object units, as stated in a
-comment inside `model.urdf`; they are not calibrated metric measurements. Hierarchical parents are
-rejected rather than silently converted with an invalid frame assumption. A future Stage-2 release
-must define its parent-link coordinate conversion before hierarchical URDF export is enabled.
+comment inside `model.urdf`; they are not calibrated metric measurements. Hierarchical URDF export
+requires motion parameters expressed in each parent link's coordinate frame.
 
 ## Kinematic tree behavior
 
-If a checkpoint contains `parent_head_state_dict`, MonoArt resolves cycles and emits a kinematic tree. The recovered Stage-1 artifact does not contain that state, so the default URDF contains independent base-relative joints rather than a predicted hierarchy. The debug run manifest records `contains_kinematic_estimator: false` when `--keep-intermediates` is enabled.
+Stage-1 inference emits independent base-relative joints. Checkpoints containing `parent_head_state_dict` additionally enable cycle resolution and kinematic-tree prediction. The debug run manifest records this capability in `contains_kinematic_estimator` when `--keep-intermediates` is enabled.
 
 ## Determinism
 

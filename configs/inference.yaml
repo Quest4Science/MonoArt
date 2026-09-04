@@ -1,4 +1,4 @@
-# Architecture of the released MonoArt motion checkpoint.
+# Architecture of the MonoArt Stage-1 motion checkpoint.
 # Paths are supplied through the CLI; this file is portable.
 
 data:

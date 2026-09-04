@@ -1,4 +1,4 @@
-# Dual-Query Motion Decoder training configuration for the released architecture.
+# Dual-Query Motion Decoder training configuration.
 
 data:
   train_csv: data/motion/splits/train.csv
