@@ -60,11 +60,12 @@ segmented, and articulated 3D asset.
 
 The recovered `monoart_stage1.pt` artifact combines the MonoArt-owned semantic-reasoner and motion-decoder weights and removes optimizer state. TRELLIS remains an external checkpoint. The available artifact does **not** contain the Kinematic Estimator head; Stage-1 inference therefore attaches predicted links to the base. The estimator architecture and Stage-2 training path are included, but a complete tree requires a checkpoint containing `parent_head_state_dict`.
 
-This boundary is reported by `monoart inspect-checkpoint` and, when intermediate files are retained, by `work/run.json`. See [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md) for the remaining author decisions before a public release.
+This boundary is reported by `monoart inspect-checkpoint` and, when intermediate files are retained, by `work/run.json`. See [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md) for the remaining items planned for the final release.
 
 ## 🗓️ TODO
 
-- [ ]  **October 2026:** Fix the remaining minor bugs.
+- [x] ~~Publish the initial code and checkpoint release (organized and functional, but not yet fully polished).~~
+- [ ] **October 2026:** Fix the remaining minor bugs and publish the final release.
 
 ## 🛠️ Installation
 
@@ -96,8 +97,6 @@ curl -L -o checkpoints/monoart_stage1.pt.json \
 python -m monoart verify-checkpoint checkpoints/monoart_stage1.pt
 python -m monoart inspect-checkpoint checkpoints/monoart_stage1.pt
 ```
-
-The locally validated artifact is 583,908,148 bytes with SHA-256 `ab523603fed5b03807219a08284cdea22c4e82969cef98a72f7f2b2ace068fbe`. Check the published manifest in case a later release replaces it.
 
 ### TRELLIS Weights
 

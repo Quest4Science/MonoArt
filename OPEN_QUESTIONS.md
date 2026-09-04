@@ -1,4 +1,4 @@
-# Open questions before publication
+# Open questions for the final release
 
 This file records decisions that cannot be inferred safely from the recovered code and checkpoints.
 
