@@ -43,4 +43,4 @@ The checked-in unified environment was recreated from scratch and validated with
 - A fresh six-day training reproduction was not run during code preparation.
 - Cross-hardware bitwise equality is not expected.
 
-These limits are publication metadata, not hidden fallbacks. See [OPEN_QUESTIONS.md](../OPEN_QUESTIONS.md).
+These limits are publication metadata, not hidden fallbacks.

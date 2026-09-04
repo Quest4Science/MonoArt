@@ -2,7 +2,6 @@ include CITATION.cff
 include LICENSE
 include README.md
 include README_CN.md
-include OPEN_QUESTIONS.md
 recursive-include assets *.jpg
 recursive-include checkpoints *.md *.json
 recursive-include configs *.yaml

@@ -59,7 +59,7 @@ Reconstruction** 的官方实现。MonoArt 能够从单张物体图像恢复带�
 
 整理得到的 `monoart_stage1.pt` 权重合并了 MonoArt 自有的语义推理器和运动解码器权重，并移除了优化器状态。TRELLIS 仍使用独立的外部权重。当前发布的权重**不包含** Kinematic Estimator head，因此 Stage-1 推理会将预测出的各个 link 连接到 base。仓库已经包含该估计器的网络结构和 Stage-2 训练流程，但要生成完整的运动学树，仍需使用包含 `parent_head_state_dict` 的权重。
 
-你可以通过 `monoart inspect-checkpoint` 查看这一权重边界；如果保留了中间文件，也可以在 `work/run.json` 中查看。最终版本计划处理的剩余事项记录在 [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md) 中。
+你可以通过 `monoart inspect-checkpoint` 查看这一权重边界；如果保留了中间文件，也可以在 `work/run.json` 中查看。
 
 ## 🗓️ 待办事项
 
